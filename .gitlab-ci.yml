@@ -1,0 +1,36 @@
+stages:
+  - build
+  - linters
+
+build:
+  stage: build
+  image: node:14-alpine
+  tags:
+    - docker
+  artifacts:
+    paths:
+      - node_modules/
+  cache:
+    paths:
+      - ./node_modules
+  before_script:
+    - apk add git
+  script:
+    - yarn
+    - yarn build
+
+lint_sass:
+  stage: linters
+  image: node:14-alpine
+  tags:
+    - docker
+  script:
+    - yarn sass-lint
+
+lint_js:
+  stage: linters
+  image: node:14-alpine
+  tags:
+    - docker
+  script:
+    - yarn js-lint

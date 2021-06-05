@@ -1,0 +1,26 @@
+{
+  "options": {
+    "merge-default-rules": false,
+    "formatter": "html",
+    "output-file": "public/linters/index.html",
+    "max-warnings": 50
+  },
+  "files": {
+    "include": "src/**/*.scss"
+  },
+  "rules": {
+    "extends-before-mixins": 2,
+    "extends-before-declarations": 2,
+    "no-warn": 1,
+    "no-debug": 1,
+    "no-ids": 2,
+    "property-sort-order": [
+      1,
+      {
+        "order": [
+        ],
+        "ignore-custom-properties": true
+      }
+    ]
+  }
+}

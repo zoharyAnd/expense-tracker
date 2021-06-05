@@ -1,0 +1,40 @@
+$breakpoints: (
+  xxs: 375px,
+  xs: 576px,
+  sm: 768px,
+  md: 992px,
+  bmd: 1024,
+  lg: 1200px,
+  xlg: 1360px,
+);
+
+@mixin above($breakpoint) {
+    // Get the breakpoint value.
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // Write the media query.
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+}
+
+@mixin below($breakpoint) {
+   $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+   // Write the media query.
+   @media (max-width: ($breakpoint-value - 1)) {
+     @content;
+   }
+}
+
+@mixin between($lower, $upper ) {
+  // Get the lower and upper breakpoints.
+  $lower-breakpoint: map-get($breakpoints, $lower);
+  $upper-breakpoint: map-get($breakpoints, $upper);
+
+  // Write the media query.
+  @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+    @content;
+  }
+
+}
