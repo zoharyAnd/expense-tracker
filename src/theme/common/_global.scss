@@ -10,8 +10,9 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: $themeGrey transparent;
+  scrollbar-color: $themeDark $themeWhite;
   background-color: $themeGrey;
+  color: $themeDark;
 }
 
 code {
@@ -19,19 +20,18 @@ code {
     monospace;
 }
 
-
 ::-webkit-scrollbar {
   height: 7px;
   width: 7px;
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: $themeGrey;
+  background: $themeWhite;
   -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
 }
 ::-webkit-scrollbar-corner {
-  background: $themeGrey;
+  background: $themeWhite;
 }
 
 .App {

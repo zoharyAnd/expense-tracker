@@ -2,3 +2,10 @@
 @import "./common/variables";
 @import "./common/mixins";
 @import "./common/global";
+@import "./common/layout";
+
+@import "./lib/dataTableDemo";
+
+@import "./components/header";
+@import "./components/dataTable";
+@import "./components/chart";

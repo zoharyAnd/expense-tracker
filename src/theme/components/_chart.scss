@@ -1,0 +1,9 @@
+.chart-wrapper {
+  canvas {
+    min-height: auto;
+
+    @include above(md) {
+      min-height: 400px;
+    }
+  }
+}
