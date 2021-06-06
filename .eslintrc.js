@@ -52,5 +52,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 0,
     'object-curly-newline': 0,
     'no-console': 0,
+    '@typescript-eslint/no-unused-vars': 0,
   },
 };
