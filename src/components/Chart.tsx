@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react';
 import { Chart } from 'primereact/chart';
 import { getChartData } from '../utils/formatData';
-import { expenseData } from '../utils/constants';
 
 export interface Props {
   from: string;
   to: string;
+  refresh: boolean;
 }
 
-const CustomChart = ({ from, to }: Props) => {
+const CustomChart = ({ from, to, refresh }: Props) => {
   const localExpenses = useMemo(() => {
     return JSON.parse(localStorage.getItem('expenses')) !== null ? JSON.parse(localStorage.getItem('expenses')) : [];
-  }, []);
+  }, [from, to, refresh]);
 
   const data = useMemo(() => {
     return getChartData(localExpenses, from, to);
-  }, []);
+  }, [from, to, refresh]);
 
   const options = {
     responsive: true,

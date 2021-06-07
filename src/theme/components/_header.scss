@@ -1,29 +1,76 @@
 header {
   background-color: $themeWhite;
   box-shadow: 5px 5px 5px #d5d5d5;
-  padding-top: 25px;
+  padding: 10px 0;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   z-index: 1;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  
+  .header-wrapper {
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  @include below(xxs) {
+    height: auto;
+  }
 
   h1 {
-    font-size: 28px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+
+    @include above(sm) {
+      padding-left: 0;
+    }
+  }
+
+  .menu-content {
+    margin-bottom: -1px;
   }
 
 }
 
-.btn-tab {
-  &:focus {
-    box-shadow: none;
+.p-button {
+  &.btn-tab {
+    margin: 7px;
+
+    &:focus {
+      box-shadow: none;
+    }
+    &.active {
+      background-color: $primary;
+    }
   }
-  &.active {
-    background-color: $primary;
+}
+
+.p-component {
+  margin: 7px 7px 7px 0;
+}
+
+.date-filter-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+  float: right;
+
+  @include above(sm) {
+    display: inline-block;
+  }
+
+  .p-calendar {
+    width: 47%;
+    max-width: 200px;
+    margin: 0;
+
+    @include above(sm) {
+      width: auto;
+    }
   }
 }

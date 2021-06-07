@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';
@@ -10,18 +10,19 @@ import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
-import { expenseData } from '../utils/constants';
+export interface Props {
+  refresh: boolean;
+}
 
-// export interface Props {
-// }
-
-// export function App (props: IAppProps) {
-const CustomDataTable = () => {
+const CustomDataTable = ({ refresh }: Props) => {
   const dt = useRef(null);
 
   const [selectedDate, setSelectedDate] = useState(null);
-  const [globalFilter, setGlobalFilter] = useState('');
-  const [data] = useState<any[]>(expenseData);
+  const [globalFilter, setGlobalFilter] = useState<string>('');
+
+  const data = useMemo(() => {
+    return JSON.parse(localStorage.getItem('expenses')) !== null ? JSON.parse(localStorage.getItem('expenses')) : [];
+  }, [refresh]);
 
   const reset = () => {
     setSelectedDate(null);

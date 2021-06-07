@@ -3,12 +3,17 @@ import { InputText } from 'primereact/inputtext';
 import { ColorPicker } from 'primereact/colorpicker';
 import { Button } from 'primereact/button';
 
-const FormCategory = () => {
-  const [loading, setLoading] = useState(false);
+export interface Props {
+  refresh: any;
+}
+
+const FormCategory = ({ refresh }: Props) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [category, setCategory] = useState<any>({
     name: '',
-    color: null,
+    color: 'FFFFFF',
   });
 
   const localCategories = useMemo(() => {
@@ -28,28 +33,35 @@ const FormCategory = () => {
     localStorage.setItem('categories', JSON.stringify(localCategories));
 
     setLoading(false);
+    refresh();
   };
 
   return (
-    <div className="form-wrapper">
-      <p>Add a category</p>
-      <InputText
-        value={category.name}
-        onChange={(e) => setCategory({ ...category, name: e.target.value })}
-        placeholder="Comment"
-      />
+    <div className={`form-wrapper ${open ? 'open' : ''}`}>
+      <button type="button" className="btn btn-toggle" onClick={() => setOpen(!open)}>Add a category</button>
+      {open ? (
+        <div className="form-content">
+          <InputText
+            value={category.name}
+            onChange={(e) => setCategory({ ...category, name: e.target.value })}
+            placeholder="Category Name"
+          />
 
-      <ColorPicker
-        value={category.color}
-        onChange={(e) => setCategory({ ...category, color: e.value })}
-      />
+          <ColorPicker
+            value={category.color}
+            onChange={(e) => setCategory({ ...category, color: e.value })}
+            placeholder="Category color"
+          />
 
-      <Button
-        label="Add category"
-        icon="pi pi-check"
-        loading={loading}
-        onClick={handleAddCategory}
-      />
+          <Button
+            label="Add category"
+            icon="pi pi-check"
+            iconPos="right"
+            loading={loading}
+            onClick={handleAddCategory}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

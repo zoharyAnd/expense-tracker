@@ -1,5 +1,9 @@
 .main-content {
-  padding: 150px 0 50px;
+  padding: 170px 0 50px;
+
+  @include above(sm) {
+    padding: 100px 0 50px;
+  }
 }
 
 .card {

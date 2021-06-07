@@ -1,0 +1,47 @@
+.form-wrapper {
+  background-color: $themeWhite;
+  border-radius: 2px;
+  padding: 0 20px;
+  margin: 20px 0;
+
+  &.open {
+    padding: 0 20px 20px;
+
+    .btn-toggle {
+      margin-bottom: 20px;
+    }
+  }
+
+  .btn-toggle {
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid $themeGrey;
+    padding: 20px 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .p-colorpicker-preview {
+    height: 42px;
+    width: 150px;
+  }
+}
+
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include above(xs) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+input[type=search] {
+  width: 100%;
+}

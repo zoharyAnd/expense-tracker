@@ -39,3 +39,9 @@ code {
     margin-top: 70px;
   }
 }
+
+input {
+  &:focus {
+    box-shadow: none !important;
+  }
+}

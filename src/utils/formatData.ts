@@ -1,13 +1,14 @@
 export const getChartData = (data: any[], from: string, to: string) => {
+  console.log({ data, from, to });
   const localCategories = JSON.parse(localStorage.getItem('categories')) !== null ? JSON.parse(localStorage.getItem('categories')) : [];
 
+  const filteredData = data.filter((item: any) => new Date(item.date).setHours(0, 0, 0, 0) >= new Date(from).setHours(0, 0, 0, 0) && new Date(item.date).setHours(0, 0, 0, 0) <= new Date(to).setHours(0, 0, 0, 0));
+
   const formattedResult = {
-    labels: Array.from(new Set(data.map((item: any) => item.date))),
+    labels: Array.from(new Set(filteredData.map((item: any) => item.date))),
     datasets: [],
   };
   const uniqueCategories = Array.from(new Set(data.map((item: any) => item.category)));
-
-  const filteredData = data.filter((item: any) => new Date(item.date).setHours(0, 0, 0, 0) >= new Date(from).setHours(0, 0, 0, 0) && new Date(item.date).setHours(0, 0, 0, 0) <= new Date(to).setHours(0, 0, 0, 0));
 
   uniqueCategories.map((category: any) => {
     formattedResult.datasets.push({
